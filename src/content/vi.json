@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "title": "DaFur 2026 · Paws Of Summer",
+    "description": "Offline của fandom furry Đà Nẵng. 14h - 18h, Chủ Nhật 30/08/2026 tại Angel Coffee, 87 Quang Trung, Đà Nẵng."
+  },
+  "nav": {
+    "tickets": "Vé",
+    "talent": "Đăng ký tài năng",
+    "gallery": "Ảnh",
+    "about": "Giới thiệu",
+    "login": "Đăng nhập",
+    "mainNav": "Điều hướng chính",
+    "home": "DaFur, về trang chủ",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu",
+    "language": "Ngôn ngữ",
+    "soonBadge": "Sắp ra mắt"
+  },
+  "hero": {
+    "date": "Ngày 30 Tháng 8 Năm 2026",
+    "venue": "Angel Coffee, 87 Quang Trung, Đà Nẵng, Việt Nam",
+    "logoAlt": "Paws Of Summer, DaFur 2026",
+    "buyTicket": "Mua vé",
+    "eventInfo": "Thông tin sự kiện"
+  },
+  "announcement": {
+    "kicker": "☀️ LOA LOA LOA!",
+    "title": "Tiếng sóng biển đã gọi tên fandom furry Đà Nẵng!!",
+    "paragraphs": [
+      "Ban Tổ Chức DAFUR xin chính thức phát lệnh \"giải nhiệt\" cho toàn thể các bạn furry mùa hè này!",
+      "Tiếng ve kêu râm ran, cái nắng vàng ươm rót xuống phố biển Đà Nẵng... tức là tới lúc chúng mình phải lên đồ rủ nhau \"đi trốn\" rồi đó! Và mùa hè năm nay, DAFUR 2026 sẽ đưa tất cả bước vào hành trình mang tên \"Paws Of Summer\"! 🌊✨",
+      "Lấy cảm hứng từ những ngày hè ngợp nắng, tiếng sóng biển vỗ về và ly nước mát lạnh tan trên đầu lưỡi, DAFUR muốn mang đến một không gian rực rỡ, phóng khoáng, nơi các bạn furry có thể vứt hết deadline sang một bên, xỏ dép xốp, khoác lên bộ suit rực rỡ nhất và tha hồ \"quẩy\" tưng bừng cùng hội bạn thân!",
+      "Mùa hè này, BTC mong sẽ được thấy những nụ cười tỏa nắng, những cái ôm ấm áp và thật nhiều khoảnh khắc bùng nổ của mọi người dưới cái nắng dịu dàng của chiều tháng 8 Đà Nẵng."
+    ]
+  },
+  "venue": {
+    "heading": "Địa điểm",
+    "intro": "Địa điểm của chúng mình đã sẵn sàng, các bạn chỉ cần đặt báo thức và chuẩn bị một tâm hồn đẹp thôi nha!",
+    "details": [
+      {
+        "label": "Thời gian",
+        "value": "14h - 18h, Chủ Nhật, ngày 30/08/2026"
+      },
+      {
+        "label": "Tọa độ gặp gỡ",
+        "value": "Angel Coffee (Tầng 2) – 87 Quang Trung, Q. Hải Châu, Đà Nẵng"
+      },
+      {
+        "label": "Vé vào cổng thiên đường mùa hè",
+        "value": "28.000 VNĐ / người"
+      }
+    ],
+    "mapTitle": "Bản đồ đường tới Angel Coffee, 87 Quang Trung",
+    "openInMaps": "Mở trong Google Maps"
+  },
+  "rules": {
+    "heading": "Nội quy bờ biển từ Ban Tổ Chức",
+    "intro": "Để chuyến dã ngoại mùa hè của chúng ta diễn ra thật trọn vẹn, trôi chảy và tràn ngập niềm vui, các \"cư dân mùa hè\" nhớ nằm lòng vài điều sau nhé:",
+    "items": [
+      "Nhớ theo dõi bài viết trên Fanpage DAFUR - Furry Đà Nẵng thường xuyên để không bỏ lỡ những thông báo \"nóng hổi\" tiếp theo từ BTC!",
+      "Hãy dừng chân tại quầy order (Tầng 1) để sắm cho mình một ly nước thiệt mát lạnh trước khi tiến thẳng lên \"vùng trời mùa hè\" ở Tầng 2 nha.",
+      "Sự kiện của chúng mình sẽ diễn ra trọn vẹn tại phòng lớn Tầng 2. Bạn có thể tự do di chuyển, nhưng nhớ giữ thái độ lịch sự, không gây ảnh hưởng hay làm phiền đến các vị khách khác của quán nhé (Lưu ý nhẹ: BTC xin phép không chịu trách nhiệm đối với các sự cố phát sinh do cá nhân vi phạm quy định).",
+      "Luôn giữ một nụ cười rạng rỡ, thân thiện với mọi người xung quanh, cùng nhau bảo vệ tài sản của quán và gom gọn rác tại chỗ ngồi trước khi chào tạm biệt nha!"
+    ],
+    "closing": "Hẹn gặp lại tất cả các bạn tại DAFUR 2026! Hãy cùng nhau tạo nên một chiều cuối tháng 8 thật rực rỡ và đong đầy kỷ niệm nhé! 🐾☀️🏖️"
+  },
+  "soon": {
+    "body": "Phần này đang được BTC chuẩn bị, các bạn quay lại sau nha!",
+    "back": "Về trang chủ"
+  },
+  "footer": {
+    "copyright": "(C) DaFur 2026",
+    "facebook": "Fanpage DaFur trên Facebook"
+  }
+}

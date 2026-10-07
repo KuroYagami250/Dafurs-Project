@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "title": "DaFur 2026 · Paws Of Summer",
+    "description": "The Da Nang furry fandom meetup. 2 PM - 6 PM, Sunday 30 August 2026 at Angel Coffee, 87 Quang Trung, Da Nang."
+  },
+  "nav": {
+    "tickets": "Tickets",
+    "talent": "Talent sign-up",
+    "gallery": "Gallery",
+    "about": "About",
+    "login": "Log in",
+    "mainNav": "Main navigation",
+    "home": "DaFur, back to home",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "soonBadge": "Coming soon"
+  },
+  "hero": {
+    "date": "30 August 2026",
+    "venue": "Angel Coffee, 87 Quang Trung, Da Nang, Vietnam",
+    "logoAlt": "Paws Of Summer, DaFur 2026",
+    "buyTicket": "Get tickets",
+    "eventInfo": "Event info"
+  },
+  "announcement": {
+    "kicker": "☀️ HEAR YE, HEAR YE!",
+    "title": "The waves are calling the Da Nang furry fandom!!",
+    "paragraphs": [
+      "The DAFUR organizing team hereby officially declares a summer \"cool-down\" for every furry out there!",
+      "Cicadas buzzing, golden sunshine pouring over the seaside streets of Da Nang... that means it's time to dress up and \"run away\" together! This summer, DAFUR 2026 takes everyone on a journey called \"Paws Of Summer\"! 🌊✨",
+      "Inspired by sun-soaked days, the hush of the waves and an ice-cold drink melting on your tongue, DAFUR wants to bring you a bright, carefree space where you can toss your deadlines aside, slip on your flip-flops, put on your brightest suit and party all afternoon with your besties!",
+      "This summer, we hope to see sunny smiles, warm hugs and plenty of unforgettable moments under the gentle sun of a Da Nang August afternoon."
+    ]
+  },
+  "venue": {
+    "heading": "Venue",
+    "intro": "The venue is all set. All you need to do is set an alarm and bring good vibes!",
+    "details": [
+      {
+        "label": "Time",
+        "value": "2 PM - 6 PM, Sunday, 30/08/2026"
+      },
+      {
+        "label": "Meeting point",
+        "value": "Angel Coffee (2nd floor) – 87 Quang Trung, Hai Chau, Da Nang"
+      },
+      {
+        "label": "Ticket to summer paradise",
+        "value": "28,000 VND / person"
+      }
+    ],
+    "mapTitle": "Map to Angel Coffee, 87 Quang Trung",
+    "openInMaps": "Open in Google Maps"
+  },
+  "rules": {
+    "heading": "Beach rules from the organizers",
+    "intro": "To keep our summer outing smooth, complete and full of joy, all \"summer residents\" please keep these in mind:",
+    "items": [
+      "Follow the DAFUR - Furry Đà Nẵng fanpage so you don't miss any \"hot\" updates from the organizers!",
+      "Stop by the order counter (1st floor) and grab an ice-cold drink before heading up to the \"summer sky\" on the 2nd floor.",
+      "The event takes place in the big room on the 2nd floor. Feel free to move around, but please stay polite and don't disturb the café's other guests (Gentle note: the organizers are not responsible for incidents caused by individuals who break the rules).",
+      "Keep a bright smile, be friendly to everyone around you, help protect the café's property and tidy up your table before saying goodbye!"
+    ],
+    "closing": "See you all at DAFUR 2026! Let's make the last afternoon of August bright and full of memories! 🐾☀️🏖️"
+  },
+  "soon": {
+    "body": "The organizers are still preparing this part. Check back soon!",
+    "back": "Back to home"
+  },
+  "footer": {
+    "copyright": "(C) DaFur 2026",
+    "facebook": "DaFur fanpage on Facebook"
+  }
+}

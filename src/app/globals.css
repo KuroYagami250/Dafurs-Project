@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* Palette sampled from the Paws Of Summer artwork. Light theme only: the art is a sunny beach. */
+@theme {
+  --color-sea-deep: #2f6a6b;
+  --color-sea: #1c8f8f;
+  --color-sea-light: #7bcfd3;
+  --color-aqua: #5ce1e6;
+  --color-aqua-soft: #76ebed;
+  --color-sand: #fde5ab;
+  --color-sand-deep: #f1c98a;
+  --color-board: #4b5c57;
+  --color-board-frame: #ebc49f;
+  --color-pin: #d37676;
+  --color-shell: #fcad90;
+  --color-ink: #1d2b2a;
+
+  --font-sans: "Lexend Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Shadows are tinted with the sea and the sand instead of grey, so they sit in the artwork. */
+  --shadow-cta: 0 6px 16px -6px rgb(47 106 107 / 0.55);
+  --shadow-card: 0 18px 40px -16px rgb(47 106 107 / 0.45);
+  --shadow-board: 0 22px 44px -18px rgb(122 84 40 / 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+}
+
+/* In the base layer so a component can still move the ring with outline utilities. */
+@layer base {
+  :focus-visible {
+    outline: 3px solid var(--color-sea-deep);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
