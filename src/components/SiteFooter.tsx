@@ -1,3 +1,4 @@
+import { FacebookLogoIcon } from "@phosphor-icons/react/ssr";
 import type { Dictionary } from "@/lib/dictionaries";
 
 type Props = { footer: Dictionary["footer"]; facebookUrl: string };
@@ -13,11 +14,9 @@ export function SiteFooter({ footer, facebookUrl }: Props) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={footer.facebook}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-sea hover:bg-sand"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-sea transition-colors hover:bg-sand"
           >
-            <svg aria-hidden viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
-              <path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z" />
-            </svg>
+            <FacebookLogoIcon aria-hidden weight="fill" className="size-7" />
           </a>
         )}
       </div>

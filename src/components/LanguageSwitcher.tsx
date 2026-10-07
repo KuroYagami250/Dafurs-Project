@@ -1,5 +1,6 @@
 "use client";
 
+import { CaretDownIcon } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
@@ -38,14 +39,12 @@ export function LanguageSwitcher({ locale, label }: Props) {
     <details ref={detailsRef} className="group relative">
       <summary
         aria-label={label}
-        className="flex cursor-pointer list-none items-center gap-1 rounded-full px-3 py-2 font-semibold text-white [&::-webkit-details-marker]:hidden"
+        className="flex cursor-pointer list-none items-center gap-1 rounded-full px-3 py-2 font-semibold text-white text-shadow-sm text-shadow-sea-deep/60 [&::-webkit-details-marker]:hidden"
       >
         {localeLabels[locale].short}
-        <span aria-hidden className="text-xs transition-transform group-open:rotate-180">
-          ▾
-        </span>
+        <CaretDownIcon aria-hidden weight="bold" className="size-3.5 transition-transform group-open:rotate-180" />
       </summary>
-      <ul className="absolute right-0 z-20 mt-2 min-w-36 overflow-hidden rounded-xl bg-white py-1 text-ink shadow-lg">
+      <ul className="absolute right-0 z-20 mt-2 min-w-36 overflow-hidden rounded-2xl bg-white py-1 text-ink shadow-card">
         {locales.map((target) => (
           <li key={target}>
             <Link
@@ -53,7 +52,7 @@ export function LanguageSwitcher({ locale, label }: Props) {
               hrefLang={target}
               aria-current={target === locale ? "true" : undefined}
               onClick={close}
-              className="block px-4 py-2 hover:bg-sand aria-[current=true]:font-bold"
+              className="block px-4 py-2.5 transition-colors -outline-offset-3 hover:bg-sand aria-[current=true]:font-bold"
             >
               {localeLabels[target].name}
             </Link>

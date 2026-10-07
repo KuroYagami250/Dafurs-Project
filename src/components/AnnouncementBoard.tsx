@@ -4,8 +4,10 @@ type Props = { announcement: Dictionary["announcement"] };
 
 export function AnnouncementBoard({ announcement }: Props) {
   return (
-    <section id="about" aria-labelledby="about-title" className="scroll-mt-6 bg-sand px-4 pb-16 pt-4">
-      <div className="relative mx-auto max-w-5xl pt-20">
+    // Pulled up over the bottom of the hero so the pin and string hang on the sand and the board meets the
+    // wavy edge of the artwork, as in the mockup. The hero's bottom padding keeps the CTAs clear of the string.
+    <section id="about" aria-labelledby="about-title" className="relative -mt-28 scroll-mt-6 px-4 pb-16 md:-mt-40">
+      <div className="relative mx-auto max-w-4xl pt-20">
         {/* Hanging string and pin, drawn in SVG so the board can grow with its text. */}
         <svg
           aria-hidden
@@ -13,16 +15,16 @@ export function AnnouncementBoard({ announcement }: Props) {
           preserveAspectRatio="none"
           className="absolute inset-x-[20%] top-0 h-20 w-[60%]"
         >
-          <polyline points="0,80 200,6 400,80" fill="none" stroke="#1f2a27" strokeWidth="3" vectorEffect="non-scaling-stroke" />
+          <polyline points="0,80 200,6 400,80" fill="none" stroke="var(--color-ink)" strokeWidth="3" vectorEffect="non-scaling-stroke" />
           <circle cx="200" cy="6" r="6" fill="var(--color-pin)" />
         </svg>
-        <div className="rounded-3xl bg-board-frame p-3 shadow-lg md:p-4">
+        <div className="rounded-3xl bg-board-frame p-3 shadow-board md:p-4">
           <div className="rounded-2xl bg-board px-6 py-8 text-white md:px-12 md:py-12">
             <p className="text-3xl font-extrabold text-aqua-soft md:text-5xl">{announcement.kicker}</p>
-            <h2 id="about-title" className="mt-2 text-xl font-bold uppercase text-aqua-soft md:text-2xl">
+            <h2 id="about-title" className="mt-2 text-xl font-bold uppercase text-balance text-aqua-soft md:text-2xl">
               {announcement.title}
             </h2>
-            <div className="mt-6 space-y-4 leading-relaxed text-white/95">
+            <div className="mt-6 space-y-4 leading-relaxed text-white/95 md:text-lg">
               {announcement.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}

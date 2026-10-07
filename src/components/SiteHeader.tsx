@@ -1,3 +1,4 @@
+import { ArrowRightIcon } from "@phosphor-icons/react/ssr";
 import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
@@ -26,7 +27,7 @@ export function SiteHeader({ locale, nav }: Props) {
               <li key={item.key} className="whitespace-nowrap">
                 <Link
                   href={item.href}
-                  className="whitespace-nowrap font-semibold uppercase text-white underline decoration-2 underline-offset-8 drop-shadow hover:text-aqua-soft"
+                  className="whitespace-nowrap font-semibold uppercase text-white underline decoration-2 underline-offset-8 transition-colors text-shadow-sm text-shadow-sea-deep/60 hover:text-aqua-soft"
                 >
                   {item.label}
                 </Link>
@@ -40,9 +41,10 @@ export function SiteHeader({ locale, nav }: Props) {
           <LanguageSwitcher locale={locale} label={nav.language} />
           <Link
             href={loginHref}
-            className="hidden whitespace-nowrap rounded-full bg-aqua px-5 py-2.5 font-bold text-ink shadow hover:bg-aqua-soft xl:inline-block"
+            className="hidden items-center gap-2 whitespace-nowrap rounded-full bg-aqua px-5 py-2.5 font-bold text-ink shadow-cta transition-colors hover:bg-aqua-soft active:translate-y-px xl:inline-flex"
           >
-            {nav.login} →
+            {nav.login}
+            <ArrowRightIcon aria-hidden weight="bold" className="size-4" />
           </Link>
           <MobileMenu
             items={items}

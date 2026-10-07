@@ -58,7 +58,7 @@ test("coming soon gradient reaches the footer without a gap", async ({ page }) =
   expect(Math.abs(footer!.y - (section!.y + section!.height))).toBeLessThanOrEqual(1);
 });
 
-for (const width of [768, 1024, 1180, 1366]) {
+for (const width of [768, 1024, 1180, 1280, 1366, 1920]) {
   for (const lang of ["vi", "en"]) {
     test(`header stays on one row at ${width}px (${lang})`, async ({ page, isMobile }) => {
       test.skip(isMobile, "desktop widths only");
@@ -85,4 +85,67 @@ test("language menu closes after navigating", async ({ page, isMobile }) => {
   await page.getByRole("link", { name: /Mua vé/ }).click();
   await expect(page).toHaveURL(/\/vi\/tickets$/);
   await expect(page.getByRole("link", { name: "English" })).toBeHidden();
+});
+
+for (const width of [768, 1024, 1366, 1920]) {
+  test(`hero shows the whole beach and the board hangs on the sand at ${width}px`, async ({ page, isMobile }) => {
+    test.skip(isMobile, "desktop widths only");
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/vi");
+    const hero = (await page.locator("main > section").first().boundingBox())!;
+    // The artwork is 1366x1194 with a transparent wavy edge below y=1094: a hero at least 80% as tall as it is
+    // wide never crops the sand, rocks or shell.
+    expect(hero.height).toBeGreaterThanOrEqual(hero.width * 0.8 - 1);
+    const pin = (await page.locator("#about svg circle").boundingBox())!;
+    expect(pin.y + pin.height).toBeLessThan(hero.y + hero.height);
+    const cta = (await page.getByRole("link", { name: "Thông tin sự kiện" }).boundingBox())!;
+    expect(cta.y + cta.height + 16).toBeLessThan(pin.y);
+  });
+}
+
+test("the board pin sits on the sand on phones too", async ({ page, isMobile }) => {
+  test.skip(!isMobile, "mobile only");
+  await page.goto("/vi");
+  const hero = (await page.locator("main > section").first().boundingBox())!;
+  const pin = (await page.locator("#about svg circle").boundingBox())!;
+  expect(pin.y + pin.height).toBeLessThan(hero.y + hero.height);
+  const cta = (await page.getByRole("link", { name: "Thông tin sự kiện" }).boundingBox())!;
+  expect(cta.y + cta.height + 16).toBeLessThan(pin.y);
+});
+
+test("long text keeps a readable line length", async ({ page, isMobile }) => {
+  test.skip(isMobile, "desktop widths only");
+  await page.setViewportSize({ width: 1366, height: 900 });
+  await page.goto("/vi");
+  const blocks = page.locator('#about p, section[aria-labelledby="rules-title"] li, section[aria-labelledby="rules-title"] p');
+  for (const block of await blocks.all()) {
+    const ems = await block.evaluate((el) => el.getBoundingClientRect().width / parseFloat(getComputedStyle(el).fontSize));
+    // About 46em of Lexend is roughly 80 characters per line.
+    expect(ems).toBeLessThanOrEqual(46);
+  }
+});
+
+test("header text is never smaller than 12px", async ({ page, isMobile }) => {
+  test.skip(isMobile, "desktop layout");
+  await page.setViewportSize({ width: 1366, height: 900 });
+  await page.goto("/vi");
+  const sizes = await page.locator("header").evaluate((header) =>
+    [...header.querySelectorAll("*")]
+      .filter((el) => [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent!.trim() !== ""))
+      .filter((el) => (el as HTMLElement).offsetParent !== null)
+      .map((el) => parseFloat(getComputedStyle(el).fontSize)),
+  );
+  expect(Math.min(...sizes)).toBeGreaterThanOrEqual(12);
+});
+
+test("keyboard focus ring in the language menu is not clipped", async ({ page, isMobile }) => {
+  test.skip(isMobile, "desktop layout");
+  await page.goto("/vi");
+  await page.getByLabel("Ngôn ngữ").click();
+  await page.keyboard.press("Tab");
+  const focused = page.locator(":focus");
+  await expect(focused).toHaveText("Tiếng Việt");
+  // The list clips overflow for its rounded corners, so the ring must be drawn inside the link.
+  const offset = await focused.evaluate((el) => parseFloat(getComputedStyle(el).outlineOffset));
+  expect(offset).toBeLessThan(0);
 });
