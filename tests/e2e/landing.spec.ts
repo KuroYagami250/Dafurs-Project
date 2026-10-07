@@ -57,3 +57,32 @@ test("coming soon gradient reaches the footer without a gap", async ({ page }) =
   const footer = await page.locator("footer").boundingBox();
   expect(Math.abs(footer!.y - (section!.y + section!.height))).toBeLessThanOrEqual(1);
 });
+
+for (const width of [768, 1024, 1180, 1366]) {
+  for (const lang of ["vi", "en"]) {
+    test(`header stays on one row at ${width}px (${lang})`, async ({ page, isMobile }) => {
+      test.skip(isMobile, "desktop widths only");
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto(`/${lang}`);
+      const header = await page.locator("header").boundingBox();
+      expect(header!.height).toBeLessThanOrEqual(96);
+      // Every visible header control is a single line (a wrapped label or pill is taller than 48px).
+      for (const control of await page.locator('header nav a, header summary, header a[href$="/login"]').all()) {
+        if (!(await control.isVisible())) continue;
+        expect((await control.boundingBox())!.height).toBeLessThanOrEqual(48);
+      }
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      expect(overflow).toBeLessThanOrEqual(0);
+    });
+  }
+}
+
+test("language menu closes after navigating", async ({ page, isMobile }) => {
+  test.skip(isMobile, "desktop layout");
+  await page.goto("/vi");
+  await page.getByLabel("Ngôn ngữ").click();
+  await expect(page.getByRole("link", { name: "English" })).toBeVisible();
+  await page.getByRole("link", { name: /Mua vé/ }).click();
+  await expect(page).toHaveURL(/\/vi\/tickets$/);
+  await expect(page.getByRole("link", { name: "English" })).toBeHidden();
+});

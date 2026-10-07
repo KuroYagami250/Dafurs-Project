@@ -20,13 +20,13 @@ export function SiteHeader({ locale, nav }: Props) {
           <Image src="/images/dafur-logo.png" alt="" width={119} height={82} priority className="h-12 w-auto md:h-16" />
         </Link>
 
-        <nav aria-label={nav.mainNav} className="hidden md:block">
-          <ul className="flex items-center gap-6 lg:gap-10">
+        <nav aria-label={nav.mainNav} className="hidden xl:block">
+          <ul className="flex items-center gap-10">
             {items.map((item) => (
-              <li key={item.key}>
+              <li key={item.key} className="whitespace-nowrap">
                 <Link
                   href={item.href}
-                  className="font-semibold uppercase text-white underline decoration-2 underline-offset-8 drop-shadow hover:text-aqua-soft"
+                  className="whitespace-nowrap font-semibold uppercase text-white underline decoration-2 underline-offset-8 drop-shadow hover:text-aqua-soft"
                 >
                   {item.label}
                 </Link>
@@ -40,14 +40,20 @@ export function SiteHeader({ locale, nav }: Props) {
           <LanguageSwitcher locale={locale} label={nav.language} />
           <Link
             href={loginHref}
-            className="hidden rounded-full bg-aqua px-5 py-2.5 font-bold text-ink shadow hover:bg-aqua-soft md:inline-block"
+            className="hidden whitespace-nowrap rounded-full bg-aqua px-5 py-2.5 font-bold text-ink shadow hover:bg-aqua-soft xl:inline-block"
           >
             {nav.login} →
           </Link>
           <MobileMenu
             items={items}
             loginHref={loginHref}
-            labels={{ openMenu: nav.openMenu, closeMenu: nav.closeMenu, login: nav.login, soonBadge: nav.soonBadge }}
+            labels={{
+              openMenu: nav.openMenu,
+              closeMenu: nav.closeMenu,
+              login: nav.login,
+              soonBadge: nav.soonBadge,
+              mainNav: nav.mainNav,
+            }}
           />
         </div>
       </div>

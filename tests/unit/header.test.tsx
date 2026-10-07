@@ -39,14 +39,20 @@ describe("LanguageSwitcher", () => {
 });
 
 describe("MobileMenu", () => {
-  const labels = { openMenu: "Mở menu", closeMenu: "Đóng menu", login: "Đăng nhập", soonBadge: "Sắp ra mắt" };
+  const labels = {
+    openMenu: "Mở menu",
+    closeMenu: "Đóng menu",
+    login: "Đăng nhập",
+    soonBadge: "Sắp ra mắt",
+    mainNav: "Điều hướng chính",
+  };
 
   it("opens, closes with Escape and closes after choosing a link", () => {
     render(<MobileMenu items={getNavItems("vi", viDict.nav)} loginHref="/vi/login" labels={labels} />);
     expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Mở menu" }));
-    expect(screen.getByRole("navigation")).toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: "Điều hướng chính" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Đóng menu" })).toHaveAttribute("aria-expanded", "true");
 
     fireEvent.keyDown(window, { key: "Escape" });
@@ -54,6 +60,62 @@ describe("MobileMenu", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Mở menu" }));
     fireEvent.click(screen.getByRole("link", { name: /Giới thiệu/ }));
+    expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
+  });
+});
+
+describe("LanguageSwitcher closing", () => {
+  function openSwitcher() {
+    const utils = render(<LanguageSwitcher locale="vi" label="Ngôn ngữ" />);
+    const details = utils.container.querySelector("details")!;
+    details.open = true;
+    return { ...utils, details };
+  }
+
+  it("closes on Escape", () => {
+    const { details } = openSwitcher();
+    fireEvent.keyDown(window, { key: "Escape" });
+    expect(details.open).toBe(false);
+  });
+
+  it("closes on a pointer press outside it", () => {
+    const { details } = openSwitcher();
+    fireEvent.pointerDown(document.body);
+    expect(details.open).toBe(false);
+  });
+
+  it("stays open on a pointer press inside it", () => {
+    const { details } = openSwitcher();
+    fireEvent.pointerDown(screen.getByRole("link", { name: "English" }));
+    expect(details.open).toBe(true);
+  });
+
+  it("closes after choosing a language", () => {
+    const { details } = openSwitcher();
+    fireEvent.click(screen.getByRole("link", { name: "Tiếng Việt" }));
+    expect(details.open).toBe(false);
+  });
+
+  it("closes when the page changes", () => {
+    pathname.current = "/vi";
+    const { details, rerender } = openSwitcher();
+    pathname.current = "/vi/tickets";
+    rerender(<LanguageSwitcher locale="vi" label="Ngôn ngữ" />);
+    expect(details.open).toBe(false);
+  });
+});
+
+describe("MobileMenu outside press", () => {
+  it("closes when pressing outside the menu", () => {
+    render(
+      <MobileMenu
+        items={getNavItems("vi", viDict.nav)}
+        loginHref="/vi/login"
+        labels={{ openMenu: "Mở menu", closeMenu: "Đóng menu", login: "Đăng nhập", soonBadge: "Sắp ra mắt", mainNav: "Điều hướng chính" }}
+      />,
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Mở menu" }));
+    fireEvent.pointerDown(document.body);
     expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
   });
 });
